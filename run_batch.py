@@ -9,18 +9,21 @@ from itertools import product
 fixed_parameters = {
     "height": 20,
     "width": 20,
-    "initial_sheep": 100,
-    "initial_wolves": 50,
+    #"initial_sheep": 100,
+    #"initial_wolves": 50,
     "sheep_reproduce": 0.04,
     "wolf_reproduce": 0.05,
     "grass": True,
+    "grass_regrowth_time": 30, 
+    "sheep_gain_from_food": 4,
+    "wolf_gain_from_food": 20
 }
 
 # parameters you want to vary
 # can also include combinations here
-params = {"grass_regrowth_time": [*range(25,37,5)], 
-        "sheep_gain_from_food": [*range(2,6,1)],
-        "wolf_gain_from_food": [*range(18,27,2)]
+params = {"initial_wolves": [0, 10, 20, 50, 70, 100], 
+        "initial_sheep": [*range(50,150,20)],
+        "initial_lawnmowers": [0, 10, 20, 50, 70, 100]
         }
 
 # combine all the parameters you want to combine using this function
