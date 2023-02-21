@@ -134,7 +134,14 @@ class Lawnmower(RandomWalker):
         #### wolves don't move or have energy, they just eat sheep
         #self.random_move()
         #self.energy -= 1
-        grass = [obj for obj in self.model.space.agents if isinstance(obj, GrassPatch)]
+        #grass = [obj for obj in self.model.space.agents if isinstance(obj, GrassPatch)]
+
+        grass = self.model.grid.get_neighbors(
+            self.pos,
+            moore=True,
+            include_center=True,
+            radius = self.model.width
+        )
 
         #grass_locations = []
         #for obj in self.model.grid.agents:
@@ -142,9 +149,9 @@ class Lawnmower(RandomWalker):
         #        grass_locations.append(obj.pos)
 
         grass_to_cut = self.random.choice(grass)
+
         #self.pos = wanted_grass.pos
         grass_to_cut.fully_grown = False
-
 
         # If there are sheep present, eat one
         #x, y = self.pos
